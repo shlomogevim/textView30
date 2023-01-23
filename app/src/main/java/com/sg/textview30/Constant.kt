@@ -10,6 +10,8 @@ const val SHARPREF_ALMA = "ShareprefAlma"
 
 const val NO_TOP= -1
 const val NO_BOTTOM= -1
+const val TOP="Top"
+const val BOTTOM= "Bottom"
 
 const val POST_REF="Posts"
 const val POST_ID="post_id"

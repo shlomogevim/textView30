@@ -18,7 +18,7 @@ class CreatePosts {
             )
             postId = 87
 
-            textLocation = arrayListOf(10,-1,10,10,0,0, 0, 0)  //  Top  o.k.
+            textLocation = arrayListOf(10,100,10,-1,0,0, 0, 0)  //  Top  o.k.
 //            textLocation = arrayListOf(10,0,0,-1,0,0, 0, 0)  //  Button   n.o.k.
 
             postPadding = arrayListOf(0, 0, 10,0)
