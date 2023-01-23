@@ -1,24 +1,11 @@
-package com.sg.textview30
+package com.sg.textview30.save_it
 
-import android.content.Context
-import android.content.res.Resources
-import android.graphics.Color
-import android.graphics.drawable.GradientDrawable
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.view.Gravity
-import android.view.View
-import android.view.WindowManager
-import android.widget.LinearLayout
-import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.ConstraintSet
-import androidx.core.content.res.ResourcesCompat
+class Save10 {
+   // from 23/1/2021 12:44 pm
 
-
+    /*
 class MainActivity : AppCompatActivity() {
     val helper=Helper()
-    lateinit var currentPost:Post
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
@@ -26,11 +13,14 @@ class MainActivity : AppCompatActivity() {
         val constraintLayout = ConstraintLayout(this)
        // constraintSet.clone(constraintLayout)
         setContentView(constraintLayout)
-           currentPost = CreatePosts().createPost4999071()
+        val post = CreatePosts().createPost4999071()
         //createText(constraintLayout,5,"Bottom",200,90)
-        createText(constraintLayout,currentPost)
+        createText(constraintLayout,post)
 
         /*
+
+
+
         setData(post)
         loadImage(constraintLayout, post)
         //  setText(constraintLayout, post)
@@ -56,7 +46,7 @@ class MainActivity : AppCompatActivity() {
           position= "Top"
           margin = dataAr[1]
       }
-        val mainLayout = createMainLayout(this,post, items, position, margin, dis)
+        val mainLayout = createMainLayout(this, items, position, margin, dis)
         mainLayout.id = View.generateViewId()
         constraintLayout.addView(mainLayout)
         val constraintSet = ConstraintSet()
@@ -72,11 +62,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(constraintLayout)
     }
 
-    fun createLinearLayout(context: Context,post:Post, textViewsCount: Int, margin: Int, position: String): LinearLayout {
+    fun createLinearLayout(context: Context, textViewsCount: Int, margin: Int, position: String): LinearLayout {
         val ll1 = LinearLayout(context)
         ll1.orientation = LinearLayout.VERTICAL
-        ll1.gravity= Gravity.CENTER_HORIZONTAL
-        val textViews = createTextViews(context,post, textViewsCount, margin)
+        val textViews = createTextViews(context, textViewsCount, margin)
         for (i in textViews) {
             ll1.addView(i)
         }
@@ -92,8 +81,8 @@ class MainActivity : AppCompatActivity() {
         return ll1
     }
 
-    fun createMainLayout(context: Context,post:Post, textViewsCount: Int, position: String, margin: Int, distance: Int): LinearLayout {
-        val ll1 = createLinearLayout(context, post,textViewsCount, distance, position)
+    fun createMainLayout(context: Context, textViewsCount: Int, position: String, margin: Int, distance: Int): LinearLayout {
+        val ll1 = createLinearLayout(context, textViewsCount, distance, position)
         val layoutParams = ConstraintLayout.LayoutParams(
             ConstraintLayout.LayoutParams.WRAP_CONTENT,
             ConstraintLayout.LayoutParams.WRAP_CONTENT
@@ -106,64 +95,23 @@ class MainActivity : AppCompatActivity() {
         return ll1
     }
 
-    private fun createTextViews(context: Context, post:Post, textViewsCount: Int, margin: Int): Array<TextView?> {
-           //original version
-            val textViews = arrayOfNulls<TextView>(textViewsCount)
-        for (index in 0 until textViewsCount) {
-            textViews[index] = TextView(context)
-            textViews[index]!!.id = View.generateViewId()
-            val st="זוהי הודעה מספר : "
-          //textViews[i]!!.text = "$st  $i"
-            textViews[index]!!.text = currentPost.postText[index]
+    private fun createTextViews(context: Context, textViewsCount: Int, margin: Int): Array<TextView?> {
+
+        // val textViews = createTextViews(lines)
+        val textViews = arrayOfNulls<TextView>(textViewsCount)
+        for (i in 0 until textViewsCount) {
+            textViews[i] = TextView(context)
+            textViews[i]!!.id = View.generateViewId()
+            textViews[i]!!.text = "TextView $i"
             val layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
             )
             layoutParams.setMargins(0, margin, 0, 0)
-            textViews[index]!!.layoutParams = layoutParams
+            textViews[i]!!.layoutParams = layoutParams
         }
         return textViews
     }
-
-
- /*   private fun createTextViews(context: Context, post:Post, textViewsCount: Int, margin: Int): Array<TextView?> {
-        val textViews = arrayOfNulls<TextView>(textViewsCount)
-        for (index in 0 until textViewsCount) {
-            textViews[index] = TextView(context)
-            textViews[index]!!.id = View.generateViewId()
-            textViews[index]!!.text = post.postText[index]
-            textViews[index]!!.textSize = post.postTextSize[1].toFloat()
-            textViews[index]!!.setTextColor(Color.parseColor(updateColor(post.postTextColor[1])))
-            val shape = GradientDrawable()
-            shape.cornerRadius = post.postRadiuas.toFloat()
-            shape.setColor(Color.parseColor(updateColor(post.postBackground)))
-            textViews[index]!!.background = shape
-            // textView.setPadding(leftPadding, topPadding, rightPadding, bottomPadding)
-            val pad = post.postPadding
-            textViews[index]!!.setPadding(pad[0].toPx(), pad[1].toPx(), pad[2].toPx(), pad[3].toPx())
-            textViews[index]!!.alpha = post.postTransparency / 10f
-            val typeface = helper.getFamilyFont(post.postFontFamily)
-            textViews[index]!!.typeface = ResourcesCompat.getFont(this, typeface)
-            textViews[index]!!.setLineSpacing(0f, post.lineSpacing)
-//          The first parameter is the extra space that will be added to the height of each line of text,
-//            and the second parameter is the multiplication factor that will be applied to the default line spacing.
-            val layoutParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-            )
-            layoutParams.setMargins(0, margin, 0, 0)
-            textViews[index]!!.layoutParams = layoutParams
-        }
-        return textViews
-    }*/
-
-    fun Int.toPx(): Int = (this * Resources.getSystem().displayMetrics.density).toInt()
-
-fun updateColor(str: String): String {
-    return "#" + str.replace("[^A-Za-z0-9]".toRegex(), "")
-}
-
-
   /*  private fun createTextViews(lines: ArrayList<String>): List<TextView> {
         val textViews = mutableListOf<TextView>()
         for (index in 0 until lines.size) {
@@ -198,6 +146,10 @@ fun updateColor(str: String): String {
         val density = resources.displayMetrics.density
         return (dp * density + 0.5f).toInt()
     }
+
+
+
+}*/
 
 
 
