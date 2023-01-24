@@ -45,15 +45,8 @@ class PostAdapter(val context: Context, val posts: ArrayList<Post>) :
     inner class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val layout = itemView?.findViewById<ConstraintLayout>(R.id.itemLayout)
 
-        /*   val layout = itemView?.findViewById<ConstraintLayout>(R.id.itemLayout)
-        val image = itemView?.findViewById<ImageView>(R.id.pagerImage)
-        val ken = itemView.findViewById<com.flaviofaria.kenburnsview.KenBurnsView>(R.id.tour_image)
-        val postVideoBtn = itemView?.findViewById<Button>(R.id.videoBtn)
-        val postAudioBtn = itemView?.findViewById<Button>(R.id.audioBtn)*/
-
-
         fun bindImage(post: Post) {
-            DrawGeneralPost().drawPost(context, post, layout)
+            //DrawGeneralPost().drawPost(layout, post)
         }
     }
 }
