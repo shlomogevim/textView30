@@ -29,6 +29,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         supportActionBar?.hide()
+
+
+
+
         val constraintLayout = ConstraintLayout(this)
        // constraintSet.clone(constraintLayout)
         setContentView(constraintLayout)
